@@ -44,3 +44,13 @@ body {
   text-align: center;
   font-family: "Krona One";
 }
+
+.payment {
+  padding-top: 20px;
+  text-align: center;
+  font-family: "Krona One";
+}
+
+.qrcode {
+  padding-top: 20px;
+}

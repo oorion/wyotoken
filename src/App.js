@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import logo from './logo.png';
+import QRCode from 'qrcode.react';
+
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +14,22 @@ let wormhole = require("wormholecash/lib/Wormhole").default;
 let Wormhole = new wormhole({
   restURL: 'https://wormholecash-staging.herokuapp.com/v1/'
 });
+
+let mnemonic = 'dust demise erase month street mother advice kid foster retreat ring dice scheme fine blush kidney gold now mad aspect safe before dynamic slam'
+// root seed buffer
+let rootSeed = BITBOX.Mnemonic.toSeed(mnemonic);
+
+// master HDNode
+let masterHDNode = BITBOX.HDNode.fromSeed(rootSeed, 'bitcoincash');
+
+// HDNode of BIP44 account
+let account = BITBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'");
+
+// derive the first external change address HDNode which is going to spend utxo
+let change = BITBOX.HDNode.derivePath(account, "0/0");
+
+// get the cash address
+let cashAddress = BITBOX.HDNode.toCashAddress(change);
 
 class App extends Component {
   constructor(props) {
@@ -126,11 +144,18 @@ class App extends Component {
     let successMarkup = [];
     if(this.state.showSuccess)  {
       successMarkup.push(
-        <Row>
-          <Col>
-            <p>Success</p>
-          </Col>
-        </Row>
+        <Container className='payment'>
+          <Row>
+            <Col>
+              Send $.01 (miner's fee)
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <QRCode value={cashAddress} className='qrcode' />
+            </Col>
+          </Row>
+        </Container>
       )
     }
     return (
