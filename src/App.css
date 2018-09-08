@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #FFC425 !important;
 }
 .App {
   text-align: center;
@@ -72,4 +73,8 @@ body {
 
 .footer a {
   color: white;
+}
+
+.titleRow {
+  background-color: #492F24;
 }
