@@ -132,7 +132,7 @@ class App extends Component {
         <Container className='payment'>
           <Row>
             <Col>
-              Send $.01 (miner's fee)
+              Send $.01 (miners fee)
             </Col>
           </Row>
           <Row>
@@ -154,7 +154,7 @@ class App extends Component {
           </Col>
         </Row>
         {formMarkup}
-        {successMarkup  }
+        {successMarkup}
       </Container>
     );
   }
