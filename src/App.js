@@ -116,7 +116,7 @@ class App extends Component {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col className='header'>
             <img src={logo} className="App-logo" alt="logo" />
           </Col>
         </Row>
