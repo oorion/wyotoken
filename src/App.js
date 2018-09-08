@@ -59,7 +59,8 @@ class App extends Component {
       showForm: true,
       showSuccess: false,
       showManagement: false,
-      grantee: ''
+      grantee: '',
+      showCheckout: false
     }
   }
 
@@ -96,8 +97,7 @@ class App extends Component {
     console.log("SUCCESS: ", txid)
     this.setState({
       showForm: false,
-      showSuccess: true,
-      showManagement: false
+      showSuccess: true
     });
   }
 
@@ -129,6 +129,10 @@ class App extends Component {
     console.log(txHex)
     let txid = await Wormhole.RawTransactions.sendRawTransaction(txHex);
     console.log("SUCCESS: ", txid)
+    this.setState({
+      showManagement: false,
+      showCheckout: true
+    });
   }
 
   handleInputChange(e) {
@@ -216,6 +220,17 @@ class App extends Component {
               </FormGroup>
               <Button>Submit</Button>
             </Form>
+          </Col>
+        </Row>
+      )
+    }
+
+    let checkout = [];
+    if(this.state.showCheckout) {
+      checkout.push(
+        <Row>
+          <Col>
+            buy shit!
           </Col>
         </Row>
       )
