@@ -45,7 +45,8 @@ class App extends Component {
       amount: '',
       showForm: true,
       showSuccess: false,
-      showManagement: false
+      showManagement: false,
+      showCheckout: false
     }
   }
 
@@ -83,15 +84,16 @@ class App extends Component {
     let txid = await BITBOX.RawTransactions.sendRawTransaction(txHex);
     this.setState({
       showForm: false,
-      showSuccess: true,
-      showManagement: false
+      showSuccess: true
     });
   }
 
-  handleTokenCreation(e) {
-    console.log(e)
-    let grant = await Wormhole.PayloadCreation.grant(186, "100");
-    console.log(grant)
+  async handleTokenCreation(e) {
+    //let grant = await Wormhole.PayloadCreation.grant(186, this.state.amount);
+    this.setState({
+      showManagement: false,
+      showCheckout: true
+    });
   }
 
   handleInputChange(e) {
@@ -173,6 +175,17 @@ class App extends Component {
               </FormGroup>
               <Button>Submit</Button>
             </Form>
+          </Col>
+        </Row>
+      )
+    }
+
+    let checkout = [];
+    if(this.state.showCheckout) {
+      checkout.push(
+        <Row>
+          <Col>
+            buy shit!
           </Col>
         </Row>
       )
