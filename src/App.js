@@ -116,7 +116,7 @@ class App extends Component {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col className='header'>
             <img src={logo} className="App-logo" alt="logo" />
           </Col>
         </Row>
@@ -124,7 +124,7 @@ class App extends Component {
           <Col>
             <Form>
               <FormGroup>
-                <Label for="exampleEmail">Email</Label>
+                <Label for="exampleEmail">WWWW</Label>
                 <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
               </FormGroup>
               <FormGroup>

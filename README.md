@@ -1,16 +1,14 @@
-## BITBOX Scaffold React
+## WyoToken House Bill 70 Utility Token Generator
 
-## Setup
+Created for the [WyoHackathon 2018](https://www.wyohackathon.io/).
 
-1. [Install `bitbox-cli`](https://www.npmjs.com/package/bitbox-cli) globally
-    * `npm install bitbox-cli --global`
-2. Scaffold an Angular app w/ BITBOX web bindings
-    * `bitbox new myApp --scaffold react`
-3. `cd` in to the newly created app
-    * `cd myApp`
-4. Install dependencies
-    * `npm install`
-5. Start the app
-    * `npm start`
-6. Open a browser to `http://localhost:3000/`
-7. Win
+### Created by
+
+* [oorion](https://github.com/oorion)
+* [kachiengz](https://github.com/kachiengz)
+* [FinleyMcIlwaine](https://github.com/FinleyMcIlwaine)
+
+### More info
+
+* [Github Repo](https://github.com/oorion/wyotoken)
+* [MIT License](https://github.com/oorion/wyotoken/blob/master/LICENSE.md)
