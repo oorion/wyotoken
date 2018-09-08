@@ -155,6 +155,7 @@ class App extends Component {
         </Row>
         {formMarkup}
         {successMarkup}
+        <a href='http://www.wyoleg.gov/2018/Digest/HB0070.pdf'>More info on HB70</a>
       </Container>
     );
   }
