@@ -59,12 +59,12 @@ class App extends Component {
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
-      txid: "0a6a946cc8b9d969dd482f13215d7da1eaf98518079e96cdc7829850d60c841a",
-      vout: 1,
+      txid: "886199863d93faf1ea3bc67adb5def3f500e9e3c59a56ab8d33c63a8299ff14a",
+      vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.02,
-      value: 0.02,
-      satoshis: 2000000
+      amount: 0.01399454,
+      value: 0.01399454,
+      satoshis: 1399454
     }];
 
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
@@ -80,7 +80,8 @@ class App extends Component {
     tb.sign(0, keyPair, redeemScript, 0x01, utxo[0].satoshis);
     let builtTx = tb.build()
     let txHex = builtTx.toHex();
-    let txid = await BITBOX.RawTransactions.sendRawTransaction(txHex);
+    let txid = await Wormhole.RawTransactions.sendRawTransaction(txHex);
+    console.log("SUCCESS: ", txid)
     this.setState({
       showForm: false,
       showSuccess: true,
