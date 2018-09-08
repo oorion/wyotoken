@@ -118,6 +118,7 @@ class App extends Component {
         <Row>
           <Col className='header'>
             <img src={logo} className="App-logo" alt="logo" />
+            <h1>WyoToken Utility Token Generator</h1>
           </Col>
         </Row>
         <Row>

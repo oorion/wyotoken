@@ -7,6 +7,7 @@ Created for the [WyoHackathon 2018](https://www.wyohackathon.io/).
 * [oorion](https://github.com/oorion)
 * [kachiengz](https://github.com/kachiengz)
 * [FinleyMcIlwaine](https://github.com/FinleyMcIlwaine)
+* [caledep](https://github.com/caledep)
 
 ### More info
 
