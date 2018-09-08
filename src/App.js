@@ -88,7 +88,7 @@ class App extends Component {
     });
   }
 
-  handleTokenCreation(e) {
+  async handleTokenCreation(e) {
     console.log(e)
     let grant = await Wormhole.PayloadCreation.grant(186, "100");
     console.log(grant)
@@ -180,11 +180,11 @@ class App extends Component {
 
     return (
       <Container>
-        <Row>
-          <Col className='header'>
+        <Row className='header'>
+          <Col>
             <img src={logo} className="App-logo" alt="logo" />
           </Col>
-          <Col className='header'>
+          <Col className='title'>
             <h1>WyoToken Utility Token Generator</h1>
           </Col>
         </Row>
