@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
 import logo from './logo.png';
 
 import './App.css';
@@ -114,100 +114,87 @@ class App extends Component {
       addresses.push(<li key={i}>m/44&rsquo;/145&rsquo;/0&rsquo;/0/{i}: {BITBOX.HDNode.toCashAddress(account)}</li>);
     }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Hello BITBOX</h1>
-        </header>
-        <div className='App-content'>
-          <h2>BIP44 $BCH Wallet</h2>
-          <h3>256 bit {lang} BIP39 Mnemonic:</h3> <p>{this.state.mnemonic}</p>
-          <h3>BIP44 Account</h3>
-          <p>
-            <code>
-            "m/44'/145'/0'"
-            </code>
-          </p>
-          <h3>BIP44 external change addresses</h3>
-          <ul>
-            {addresses}
-          </ul>
-          <h3>Transaction raw hex</h3>
-          <p>{this.state.hex}</p>
-          <h3>Transaction ID</h3>
-          <p>{this.state.txid}</p>
-        </div>
-        <Form>
-          <FormGroup>
-            <Label for="exampleEmail">Email</Label>
-            <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="examplePassword">Password</Label>
-            <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleSelect">Select</Label>
-            <Input type="select" name="select" id="exampleSelect">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleSelectMulti">Select Multiple</Label>
-            <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleText">Text Area</Label>
-            <Input type="textarea" name="text" id="exampleText" />
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleFile">File</Label>
-            <Input type="file" name="file" id="exampleFile" />
-            <FormText color="muted">
-              This is some placeholder block-level help text for the above input.
-              It's a bit lighter and easily wraps to a new line.
-            </FormText>
-          </FormGroup>
-          <FormGroup tag="fieldset">
-            <legend>Radio Buttons</legend>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" />{' '}
-                Option one is this and that—be sure to include why it's great
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" />{' '}
-                Option two can be something else and selecting it will deselect option one
-              </Label>
-            </FormGroup>
-            <FormGroup check disabled>
-              <Label check>
-                <Input type="radio" name="radio1" disabled />{' '}
-                Option three is disabled
-              </Label>
-            </FormGroup>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="checkbox" />{' '}
-              Check me out
-            </Label>
-          </FormGroup>
-          <Button>Submit</Button>
-        </Form>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <img src={logo} className="App-logo" alt="logo" />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Form>
+              <FormGroup>
+                <Label for="exampleEmail">Email</Label>
+                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleSelect">Select</Label>
+                <Input type="select" name="select" id="exampleSelect">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleSelectMulti">Select Multiple</Label>
+                <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleText">Text Area</Label>
+                <Input type="textarea" name="text" id="exampleText" />
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleFile">File</Label>
+                <Input type="file" name="file" id="exampleFile" />
+                <FormText color="muted">
+                  This is some placeholder block-level help text for the above input.
+                  It's a bit lighter and easily wraps to a new line.
+                </FormText>
+              </FormGroup>
+              <FormGroup tag="fieldset">
+                <legend>Radio Buttons</legend>
+                <FormGroup check>
+                  <Label check>
+                    <Input type="radio" name="radio1" />{' '}
+                    Option one is this and that—be sure to include why it's great
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label check>
+                    <Input type="radio" name="radio1" />{' '}
+                    Option two can be something else and selecting it will deselect option one
+                  </Label>
+                </FormGroup>
+                <FormGroup check disabled>
+                  <Label check>
+                    <Input type="radio" name="radio1" disabled />{' '}
+                    Option three is disabled
+                  </Label>
+                </FormGroup>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" />{' '}
+                  Check me out
+                </Label>
+              </FormGroup>
+              <Button>Submit</Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
