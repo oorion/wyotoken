@@ -15,12 +15,13 @@ let Wormhole = new wormhole({
   restURL: 'https://wormholecash-staging.herokuapp.com/v1/'
 });
 
-let mnemonic = 'dust demise erase month street mother advice kid foster retreat ring dice scheme fine blush kidney gold now mad aspect safe before dynamic slam'
+let mnemonic = 'remain bring turkey race next ivory direct crunch dwarf material correct oak intact copper jaguar lottery hope under kingdom robot leopard call giggle genuine';
+
 // root seed buffer
 let rootSeed = BITBOX.Mnemonic.toSeed(mnemonic);
 
 // master HDNode
-let masterHDNode = BITBOX.HDNode.fromSeed(rootSeed, 'bitcoincash');
+let masterHDNode = BITBOX.HDNode.fromSeed(rootSeed, 'testnet');
 
 // HDNode of BIP44 account
 let account = BITBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'");
@@ -53,22 +54,6 @@ class App extends Component {
     e.preventDefault();
     // BITBOX.RawTransactions.getRawTransaction(this.state.txid).then((result) => {
     // }, (err) => { console.log(err); });
-    let mnemonic = 'remain bring turkey race next ivory direct crunch dwarf material correct oak intact copper jaguar lottery hope under kingdom robot leopard call giggle genuine';
-
-    // root seed buffer
-    let rootSeed = BITBOX.Mnemonic.toSeed(mnemonic);
-
-    // master HDNode
-    let masterHDNode = BITBOX.HDNode.fromSeed(rootSeed, 'testnet');
-
-    // HDNode of BIP44 account
-    let account = BITBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'");
-
-    // derive the first external change address HDNode which is going to spend utxo
-    let change = BITBOX.HDNode.derivePath(account, "0/0");
-
-    // get the cash address
-    let cashAddress = BITBOX.HDNode.toCashAddress(change);
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
