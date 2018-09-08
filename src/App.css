@@ -58,3 +58,18 @@ body {
 .header .title {
   padding-top: 5%;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #492f24;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+.footer a {
+  color: white;
+}
