@@ -42,8 +42,10 @@ class App extends Component {
       url: '',
       description: '',
       tokenManagementAddress: '',
+      amount: '',
       showForm: true,
-      showSuccess: false
+      showSuccess: false,
+      showManagement: false
     }
   }
 
@@ -81,8 +83,15 @@ class App extends Component {
     let txid = await BITBOX.RawTransactions.sendRawTransaction(txHex);
     this.setState({
       showForm: false,
-      showSuccess: true
+      showSuccess: true,
+      showManagement: false
     });
+  }
+
+  handleTokenCreation(e) {
+    console.log(e)
+    let grant = await Wormhole.PayloadCreation.grant(186, "100");
+    console.log(grant)
   }
 
   handleInputChange(e) {
@@ -126,6 +135,7 @@ class App extends Component {
         </Row>
       );
     }
+
     let successMarkup = [];
     if(this.state.showSuccess)  {
       successMarkup.push(
@@ -142,7 +152,32 @@ class App extends Component {
           </Row>
         </Container>
       )
+
+      setTimeout(() => {
+        this.setState({
+          showSuccess: false,
+          showManagement: true
+        });
+      }, 3000);
     }
+
+    let management = [];
+    if(this.state.showManagement) {
+      management.push(
+        <Row>
+          <Col>
+            <Form onSubmit={this.handleTokenCreation.bind(this)}>
+              <FormGroup>
+                <Label for="amount">Number of tokens to create</Label>
+                <Input onChange={this.handleInputChange.bind(this)} type="text" name="amount" id="amount" placeholder="Amount" value={this.state.amount} />
+              </FormGroup>
+              <Button>Submit</Button>
+            </Form>
+          </Col>
+        </Row>
+      )
+    }
+
     return (
       <Container>
         <Row>
@@ -155,6 +190,7 @@ class App extends Component {
         </Row>
         {formMarkup}
         {successMarkup}
+        {management}
         <a href='http://www.wyoleg.gov/2018/Digest/HB0070.pdf'>More info on HB70</a>
       </Container>
     );
