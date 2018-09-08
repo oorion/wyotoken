@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
 }
@@ -38,4 +42,5 @@
 
 .header {
   text-align: center;
+  font-family: "Krona One";
 }
