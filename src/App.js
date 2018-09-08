@@ -15,7 +15,9 @@ class App extends Component {
       category: '',
       url: '',
       description: '',
-      tokenManagementAddress: ''
+      tokenManagementAddress: '',
+      showForm: true,
+      showSuccess: false
     }
   }
 
@@ -23,9 +25,13 @@ class App extends Component {
   }
 
   handleSubmit(e) {
-    BITBOX.RawTransactions.getRawTransaction(this.state.txid).then((result) => {
-    }, (err) => { console.log(err); });
-    e.preventDefault();
+    // BITBOX.RawTransactions.getRawTransaction(this.state.txid).then((result) => {
+    // }, (err) => { console.log(err); });
+    // e.preventDefault();
+    this.setState({
+      showForm: false,
+      showSuccess: true
+    });
   }
 
   handleInputChange(e) {
@@ -37,16 +43,9 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Container>
-        <Row>
-          <Col className='header'>
-            <img src={logo} className="App-logo" alt="logo" />
-          </Col>
-          <Col className='header'>
-            <h1>WyoToken Utility Token Generator</h1>
-          </Col>
-        </Row>
+    let formMarkup = [];
+    if(this.state.showForm)  {
+      formMarkup.push(
         <Row>
           <Col>
             <Form onSubmit={this.handleSubmit.bind(this)}>
@@ -74,6 +73,30 @@ class App extends Component {
             </Form>
           </Col>
         </Row>
+      );
+    }
+    let successMarkup = [];
+    if(this.state.showSuccess)  {
+      successMarkup.push(
+        <Row>
+          <Col>
+            <p>Success</p>
+          </Col>
+        </Row>
+      )
+    }
+    return (
+      <Container>
+        <Row>
+          <Col className='header'>
+            <img src={logo} className="App-logo" alt="logo" />
+          </Col>
+          <Col className='header'>
+            <h1>WyoToken Utility Token Generator</h1>
+          </Col>
+        </Row>
+        {formMarkup}
+        {successMarkup}
       </Container>
     );
   }
