@@ -154,7 +154,7 @@ class App extends Component {
     if(this.state.stepOne)  {
       stepOneMarkup.push(
         <Row>
-          <Col>
+          <Col className='center'>
             <h2 className='stepHeaders'>Step 1: Define your token</h2>
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <FormGroup>
@@ -172,7 +172,7 @@ class App extends Component {
               <FormGroup>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="tokenManagementAddress" id="tokenManagementAddress" placeholder="Token Management Address" value={this.state.tokenManagementAddress} />
               </FormGroup>
-              <Button>Submit</Button>
+              <Button color='primary' size='lg'>Submit</Button>
             </Form>
           </Col>
         </Row>
@@ -183,7 +183,7 @@ class App extends Component {
     if(this.state.showStepOneSuccess)  {
       successMarkup.push(
         <Container>
-          <Row className='payment'>
+          <Row className='payment center'>
             <Col>
               <h2 className='stepHeaders'>Step 2: Send $.01 (miners fee)</h2>
             </Col>
@@ -208,7 +208,7 @@ class App extends Component {
     if(this.state.showManagement) {
       managementMarkup.push(
         <Row>
-          <Col>
+          <Col className='center'>
             <h2 className='stepHeaders'>Step 3: Grant Tokens</h2>
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
@@ -220,7 +220,7 @@ class App extends Component {
               <FormGroup>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="purchasePrice" id="purchasePrice" placeholder="Purchase price in USD" value={this.state.purchasePrice} />
               </FormGroup>
-              <Button>Submit</Button>
+              <Button color='primary' size='lg'>Submit</Button>
             </Form>
           </Col>
         </Row>
@@ -230,11 +230,18 @@ class App extends Component {
     let checkoutMarkup = [];
     if(this.state.showCheckout) {
       checkoutMarkup.push(
-        <Row>
-          <Col>
-            <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
-          </Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col className='center'>
+              <h2 className='stepHeaders'>Step 4: Purchase token for ${this.state.purchasePrice}</h2>
+            </Col>
+          </Row>
+          <Row className='center'>
+            <Col>
+              <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
+            </Col>
+          </Row>
+        </Container>
       )
     }
 
