@@ -69,12 +69,12 @@ class App extends Component {
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
-      txid: "d1eef6851dc269e7bfd7833854c7adf45e351b85d14f63bbf3c0f6d9c8170db0",
-      vout: 1,
+      txid: "6cf428560a4f90a62469ce024ee9027d85613e8ade7713ff523e6d8fa7332dd3",
+      vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.02,
-      value: 0.02,
-      satoshis: 2000000
+      amount: 0.01993454,
+      value: 0.01993454,
+      satoshis: 1993454
     }];
 
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
@@ -91,7 +91,7 @@ class App extends Component {
     let builtTx = tb.build()
     let txHex = builtTx.toHex();
     let txid = await Wormhole.RawTransactions.sendRawTransaction(txHex);
-    console.log("SUCCESS: ", txid)
+    console.log("STEP 1 SUCCESS: ", txid)
     this.setState({
       stepOne: false,
       showStepOneSuccess: true
@@ -100,19 +100,19 @@ class App extends Component {
 
   async handleTokenCreation(e) {
     e.preventDefault();
-    let grant = await Wormhole.PayloadCreation.grant(196, "100");
+    let grant = await Wormhole.PayloadCreation.grant(196, this.state.amount);
 
     let utxo = [{
-      txid: "49eb18e148a1499d987851f3890d4422b81a7b593170b8c15ca4d032e11194cd",
-      vout: 0,
+      txid: "04d784278f98b4063928c950ab2f8abe0f13bde1d74acf8fef8cda4bc9f4dc9e",
+      vout: 1,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.00191816,
-      value: 0.00191816,
-      satoshis: 191816
+      amount: 0.02,
+      value: 0.02,
+      satoshis: 2000000
     }];
     let rawTx = await Wormhole.RawTransactions.create([utxo], {});
     let opReturn = await Wormhole.RawTransactions.opReturn(rawTx, grant);
-    let ref = await Wormhole.RawTransactions.reference(opReturn, cashAddress2);
+    let ref = await Wormhole.RawTransactions.reference(opReturn, this.state.grantee);
     let changeHex = await Wormhole.RawTransactions.change(ref, [utxo], cashAddress, 0.00006);
 
     let tx = Wormhole.Transaction.fromHex(changeHex)
@@ -125,7 +125,7 @@ class App extends Component {
     let txHex = builtTx.toHex();
     console.log(txHex)
     let txid = await Wormhole.RawTransactions.sendRawTransaction(txHex);
-    console.log("SUCCESS: ", txid)
+    console.log("STEP 2 SUCCESS: ", txid)
     this.setState({
       showManagement: false,
       showCheckout: true
