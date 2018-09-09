@@ -33,3 +33,8 @@ Created for the [WyoHackathon 2018](https://www.wyohackathon.io/).
 * primary address: bchtest:qq3a4qrv9klc7uupcwgazqvvas8ev02frqcfjwqqtn
   * Needs 1 WHC
   * Needs 1 UTXO for miners fee
+
+### Step 1
+
+* primary address: bchtest:qq3a4qrv9klc7uupcwgazqvvas8ev02frqcfjwqqtn
+  * Needs 1 UTXO for miners fee
