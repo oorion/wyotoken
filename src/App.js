@@ -56,15 +56,12 @@ class App extends Component {
       description: '',
       tokenManagementAddress: '',
       amount: '',
-      showForm: true,
-      showSuccess: false,
+      stepOne: true,
+      showStepOneSuccess: false,
       showManagement: false,
       grantee: '',
       showCheckout: false
     }
-  }
-
-  componentDidMount() {
   }
 
   async handleSubmit(e) {
@@ -96,8 +93,8 @@ class App extends Component {
     let txid = await Wormhole.RawTransactions.sendRawTransaction(txHex);
     console.log("SUCCESS: ", txid)
     this.setState({
-      showForm: false,
-      showSuccess: true
+      stepOne: false,
+      showStepOneSuccess: true
     });
   }
 
@@ -106,12 +103,12 @@ class App extends Component {
     let grant = await Wormhole.PayloadCreation.grant(196, "100");
 
     let utxo = [{
-      txid: "cc066951305344604ae355797ae0fb69d3ea2f8443c079b25a7b7682f8aa9fcd",
-      vout: 1,
+      txid: "49eb18e148a1499d987851f3890d4422b81a7b593170b8c15ca4d032e11194cd",
+      vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.00198362,
-      value: 0.00198362,
-      satoshis: 198362
+      amount: 0.00191816,
+      value: 0.00191816,
+      satoshis: 191816
     }];
     let rawTx = await Wormhole.RawTransactions.create([utxo], {});
     let opReturn = await Wormhole.RawTransactions.opReturn(rawTx, grant);
@@ -153,9 +150,9 @@ class App extends Component {
   }
 
   render() {
-    let formMarkup = [];
-    if(this.state.showForm)  {
-      formMarkup.push(
+    let stepOneMarkup = [];
+    if(this.state.stepOne)  {
+      stepOneMarkup.push(
         <Row>
           <Col>
             <h2 className='stepHeaders'>Step 1: Define your token</h2>
@@ -183,7 +180,7 @@ class App extends Component {
     }
 
     let successMarkup = [];
-    if(this.state.showSuccess)  {
+    if(this.state.showStepOneSuccess)  {
       successMarkup.push(
         <Container>
           <Row>
@@ -201,15 +198,15 @@ class App extends Component {
 
       setTimeout(() => {
         this.setState({
-          showSuccess: false,
+          showStepOneSuccess: false,
           showManagement: true
         });
       }, 3000);
     }
 
-    let management = [];
+    let managementMarkup = [];
     if(this.state.showManagement) {
-      management.push(
+      managementMarkup.push(
         <Row>
           <Col>
             <h2 className ='stepHeaders'>Step 3: Grant Tokens</h2>
@@ -230,9 +227,9 @@ class App extends Component {
       )
     }
 
-    let checkout = [];
+    let checkoutMarkup = [];
     if(this.state.showCheckout) {
-      checkout.push(
+      checkoutMarkup.push(
         <Row>
           <Col>
             <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
@@ -254,10 +251,10 @@ class App extends Component {
           </Col>
         </Row>
         <hr />
-        {formMarkup}
+        {stepOneMarkup}
         {successMarkup}
-        {management}
-        {checkout}
+        {managementMarkup}
+        {checkoutMarkup}
 
         <div className="footer">
           <Navbar expand="md">
