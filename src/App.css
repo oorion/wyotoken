@@ -58,8 +58,34 @@ body {
   padding-top: 20px;
 }
 
-.textHeader {
+.header .title {
+  padding-top: 5%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #492f24;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer a:hover {
+  color: #FFC425;
+}
+
+.titleRow {
+  background-color: #492F24;
+
+/*.textHeader {
   text-align: center;
   margin-top: 20px;
   font-family: "Krona One";
-}
+  */
