@@ -46,6 +46,7 @@ body {
 .header {
   text-align: center;
   font-family: "Krona One";
+  background-color: #492F24;
 }
 
 .payment {
@@ -56,6 +57,8 @@ body {
 
 .qrcode {
   padding-top: 20px;
+  height: 300px !important;
+  width: 300px !important;
 }
 
 .footer {
@@ -74,10 +77,6 @@ body {
 
 .footer a:hover {
   color: #FFC425;
-}
-
-.titleRow {
-  background-color: #492F24;
 }
 
 .title {
