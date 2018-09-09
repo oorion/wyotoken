@@ -69,12 +69,12 @@ class App extends Component {
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
-      txid: "6cf428560a4f90a62469ce024ee9027d85613e8ade7713ff523e6d8fa7332dd3",
+      txid: "be7539be319d3c3b224f6527bcc630dc8a2324843b1869b55382e1f7eda3321b",
       vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.01993454,
-      value: 0.01993454,
-      satoshis: 1993454
+      amount: 0.01986908,
+      value: 0.01986908,
+      satoshis: 1986908
     }];
 
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
@@ -103,24 +103,24 @@ class App extends Component {
     let grant = await Wormhole.PayloadCreation.grant(196, this.state.amount);
 
     let utxo = [{
-      txid: "04d784278f98b4063928c950ab2f8abe0f13bde1d74acf8fef8cda4bc9f4dc9e",
-      vout: 1,
+      txid: "6cf428560a4f90a62469ce024ee9027d85613e8ade7713ff523e6d8fa7332dd3",
+      vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.02,
-      value: 0.02,
-      satoshis: 2000000
+      amount: 0.01993454,
+      value: 0.01993454,
+      satoshis: 1993454
     }];
-    let rawTx = await Wormhole.RawTransactions.create([utxo], {});
+    let rawTx = await Wormhole.RawTransactions.create(utxo, {});
     let opReturn = await Wormhole.RawTransactions.opReturn(rawTx, grant);
     let ref = await Wormhole.RawTransactions.reference(opReturn, this.state.grantee);
-    let changeHex = await Wormhole.RawTransactions.change(ref, [utxo], cashAddress, 0.00006);
+    let changeHex = await Wormhole.RawTransactions.change(ref, utxo, cashAddress, 0.00006);
 
     let tx = Wormhole.Transaction.fromHex(changeHex)
     let tb = Wormhole.Transaction.fromTransaction(tx)
 
     let keyPair = Wormhole.HDNode.toKeyPair(change);
     let redeemScript;
-    tb.sign(0, keyPair, redeemScript, 0x01, utxo.satoshis);
+    tb.sign(0, keyPair, redeemScript, 0x01, utxo[0].satoshis);
     let builtTx = tb.build()
     let txHex = builtTx.toHex();
     console.log(txHex)
@@ -183,18 +183,12 @@ class App extends Component {
     if(this.state.showStepOneSuccess)  {
       successMarkup.push(
         <Container>
-          <Row>
+          <Row className='payment'>
             <Col>
               <h2 className='stepHeaders'>Step 2: Send $.01 (miners fee)</h2>
             </Col>
           </Row>
-          <Row className='payment'>
-          <Col>
-              <h2 className='stepHeaders'> Step 2: Send $.01 (miners fee) </h2>
-            </Col>
-          </Row>
           <Row className='center'>
-
             <Col>
               <QRCode value={cashAddress} className='qrcode' />
             </Col>
@@ -215,7 +209,6 @@ class App extends Component {
       managementMarkup.push(
         <Row>
           <Col>
-            <h2 className ='stepHeaders'>Step 3: Grant Tokens</h2>
             <h2 className='stepHeaders'>Step 3: Grant Tokens</h2>
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
