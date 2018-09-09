@@ -69,12 +69,12 @@ class App extends Component {
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
-      txid: "be7539be319d3c3b224f6527bcc630dc8a2324843b1869b55382e1f7eda3321b",
-      vout: 0,
+      txid: "88fa28ce0dcad51dc81328db0f15d6a047974e2448a9622bc9a28dd715ba5124",
+      vout:  0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.01986908,
-      value: 0.01986908,
-      satoshis: 1986908
+      amount: 0.01993454,
+      value: 0.01993454,
+      satoshis: 1993454
     }];
 
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
@@ -100,19 +100,19 @@ class App extends Component {
 
   async handleTokenCreation(e) {
     e.preventDefault();
-    let grant = await Wormhole.PayloadCreation.grant(196, this.state.amount);
+    let grant = await Wormhole.PayloadCreation.grant(202, this.state.amount);
 
     let utxo = [{
-      txid: "6cf428560a4f90a62469ce024ee9027d85613e8ade7713ff523e6d8fa7332dd3",
+      txid: "4c79f43866e4abd2ad5f6855ef7b1780652b2d531c6b7938396461aa04391af3",
       vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.01993454,
-      value: 0.01993454,
-      satoshis: 1993454
+      amount: 0.02,
+      value: 0.02,
+      satoshis: 2000000
     }];
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
     let opReturn = await Wormhole.RawTransactions.opReturn(rawTx, grant);
-    let ref = await Wormhole.RawTransactions.reference(opReturn, this.state.grantee);
+    let ref = await Wormhole.RawTransactions.reference(opReturn, cashAddress);
     let changeHex = await Wormhole.RawTransactions.change(ref, utxo, cashAddress, 0.00006);
 
     let tx = Wormhole.Transaction.fromHex(changeHex)
