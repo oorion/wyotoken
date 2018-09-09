@@ -92,3 +92,8 @@ body {
   margin-top: 25px;
 }
 
+.stepHeaders{
+  font-family: "Krona One";
+  font-size: 140%;
+  margin-top: 10px;
+}
