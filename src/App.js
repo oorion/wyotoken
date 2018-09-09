@@ -149,6 +149,13 @@ class App extends Component {
     return BITBOX.BitcoinCash.encodeBIP21(address, options);
   }
 
+  handleNext() {
+    this.setState({
+      showStepOneSuccess: false,
+      showManagement: true
+    });
+  }
+
   render() {
     let stepOneMarkup = [];
     if(this.state.stepOne)  {
@@ -193,15 +200,13 @@ class App extends Component {
               <QRCode value={cashAddress} className='qrcode' />
             </Col>
           </Row>
+          <Row>
+            <Col className='center'>
+              <Button onClick={this.handleNext.bind(this)} color='primary' size='lg'>Continue</Button>
+            </Col>
+          </Row>
         </Container>
       )
-
-      setTimeout(() => {
-        this.setState({
-          showStepOneSuccess: false,
-          showManagement: true
-        });
-      }, 3000);
     }
 
     let managementMarkup = [];
