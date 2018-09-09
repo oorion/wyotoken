@@ -57,6 +57,8 @@ body {
 
 .qrcode {
   padding-top: 20px;
+  height: 300px !important;
+  width: 300px !important;
 }
 
 .header .title {
