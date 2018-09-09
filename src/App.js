@@ -193,11 +193,13 @@ class App extends Component {
 
     return (
       <Container>
-        <Row className='titleRow'>
+        <Row>
           <Col className='header'>
             <img src={logo} className="App-logo" alt="logo" />
           </Col>
-          <Col className='header'>
+        </Row>
+        <Row>
+          <Col className='textHeader'>
             <h1>WyoToken Utility Token Generator</h1>
           </Col>
         </Row>

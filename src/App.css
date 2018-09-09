@@ -9,6 +9,8 @@ body {
 
 .App-logo {
   height: 223px;
+  background-color: #492F24;
+  /* background-image: radial-gradient(#492F24,#FFC425); */
 }
 
 .App-header {
@@ -56,6 +58,8 @@ body {
   padding-top: 20px;
 }
 
-.titleRow {
-  background-color: #492F24;
+.textHeader {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Krona One";
 }
