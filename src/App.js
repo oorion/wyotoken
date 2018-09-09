@@ -172,7 +172,7 @@ class App extends Component {
               <FormGroup>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="tokenManagementAddress" id="tokenManagementAddress" placeholder="Token Management Address" value={this.state.tokenManagementAddress} />
               </FormGroup>
-              <Button>Submit</Button>
+              <Button color='primary' size='lg'>Submit</Button>
             </Form>
           </Col>
         </Row>
@@ -220,7 +220,7 @@ class App extends Component {
               <FormGroup>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="purchasePrice" id="purchasePrice" placeholder="Purchase price in USD" value={this.state.purchasePrice} />
               </FormGroup>
-              <Button>Submit</Button>
+              <Button color='primary' size='lg'>Submit</Button>
             </Form>
           </Col>
         </Row>
