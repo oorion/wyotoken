@@ -154,7 +154,7 @@ class App extends Component {
     if(this.state.stepOne)  {
       stepOneMarkup.push(
         <Row>
-          <Col>
+          <Col className='center'>
             <h2 className='stepHeaders'>Step 1: Define your token</h2>
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <FormGroup>
@@ -184,7 +184,7 @@ class App extends Component {
       successMarkup.push(
         <Container>
           <Row>
-            <Col>
+            <Col className='center'>
               <h2 className='stepHeaders'>Step 2: Send $.01 (miners fee)</h2>
             </Col>
           </Row>
@@ -208,7 +208,7 @@ class App extends Component {
     if(this.state.showManagement) {
       managementMarkup.push(
         <Row>
-          <Col>
+          <Col className='center'>
             <h2 className='stepHeaders'>Step 3: Grant Tokens</h2>
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
