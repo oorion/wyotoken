@@ -161,23 +161,18 @@ class App extends Component {
             <h2>Step 1: Define your token</h2>
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <FormGroup>
-                <Label for="name">Name</Label>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="name" id="name" placeholder="Name" value={this.state.name} />
               </FormGroup>
               <FormGroup>
-                <Label for="category">Category</Label>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="category" id="category" placeholder="Category" value={this.state.category} />
               </FormGroup>
               <FormGroup>
-                <Label for="url">Url</Label>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="url" id="url" placeholder="Url" value={this.state.url} />
               </FormGroup>
               <FormGroup>
-                <Label for="description">Description</Label>
                 <Input className='inputField'  onChange={this.handleInputChange.bind(this)} type="text" name="description" id="description" placeholder="Description" value={this.state.description}/>
               </FormGroup>
               <FormGroup>
-                <Label for="token-management-address">Token Management Address</Label>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="tokenManagementAddress" id="tokenManagementAddress" placeholder="Token Management Address" value={this.state.tokenManagementAddress} />
               </FormGroup>
               <Button>Submit</Button>
@@ -220,15 +215,12 @@ class App extends Component {
             <h2>Grant Tokens</h2>
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
-                <Label for="amount">Grantee</Label>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="grantee" id="grantee" placeholder="Grantee" value={this.state.grantee} />
               </FormGroup>
               <FormGroup>
-                <Label for="amount">Number of tokens to create</Label>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="amount" id="amount" placeholder="Number of tokens to create" value={this.state.amount} />
               </FormGroup>
               <FormGroup>
-                <Label for="purchasePrice">Purchase price in USD</Label>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="purchasePrice" id="purchasePrice" placeholder="Purchase price in USD" value={this.state.purchasePrice} />
               </FormGroup>
               <Button>Submit</Button>
@@ -251,11 +243,12 @@ class App extends Component {
 
     return (
       <Container>
-
-        <Row className='titleRow header'>
+        <Navbar className='titleRow header'>
           <Col>
             <img src={logo} className="App-logo" alt="logo" />
           </Col>
+        </Navbar>
+        <Row>
           <Col className='title'>
             <h1>WyoToken Utility Token Generator</h1>
           </Col>
@@ -265,7 +258,7 @@ class App extends Component {
         {successMarkup}
         {management}
         {checkout}
-      
+
         <div className="footer">
           <Navbar expand="md">
             <NavbarBrand href="https://www.wyohackathon.io">WyoHackathon</NavbarBrand>
