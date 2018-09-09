@@ -230,11 +230,18 @@ class App extends Component {
     let checkoutMarkup = [];
     if(this.state.showCheckout) {
       checkoutMarkup.push(
-        <Row>
-          <Col>
-            <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
-          </Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col className='center'>
+              <h2 className='stepHeaders'>Step 4: Purchase token for ${this.state.purchasePrice}</h2>
+            </Col>
+          </Row>
+          <Row className='center'>
+            <Col>
+              <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
+            </Col>
+          </Row>
+        </Container>
       )
     }
 
