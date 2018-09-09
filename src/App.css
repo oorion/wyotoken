@@ -66,7 +66,6 @@ body {
   background-color: #492f24;
   color: white;
   text-align: center;
-  margin-top: 100px;
 }
 
 .footer a {
@@ -87,8 +86,8 @@ body {
   font-family: "Krona One";
 }
 
-.inputField {
-  margin-bottom: 25px;
-  margin-top: 25px;
+.form-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
