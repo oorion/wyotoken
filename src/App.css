@@ -82,3 +82,8 @@ body {
 .titleRow {
   background-color: #492F24;
 }
+
+.container .inputField {
+  width: 50%;
+  margin: auto;
+}
