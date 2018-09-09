@@ -254,7 +254,7 @@ class App extends Component {
         {stepOneMarkup}
         {successMarkup}
         {managementMarkup}
-        {checkout}
+        {checkoutMarkup}
 
         <div className="footer">
           <Navbar expand="md">
