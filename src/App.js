@@ -143,6 +143,15 @@ class App extends Component {
     this.setState(obj);
   }
 
+  bip21Address(address, amount) {
+    let options = {
+      amount: amount,
+      label: "mah label",
+      message: "bitbox ftw"
+    };
+    return BITBOX.BitcoinCash.encodeBIP21(address, options);
+  }
+
   render() {
     let formMarkup = [];
     if(this.state.showForm)  {
@@ -216,7 +225,11 @@ class App extends Component {
               </FormGroup>
               <FormGroup>
                 <Label for="amount">Number of tokens to create</Label>
-                <Input onChange={this.handleInputChange.bind(this)} type="text" name="amount" id="amount" placeholder="Amount" value={this.state.amount} />
+                <Input onChange={this.handleInputChange.bind(this)} type="text" name="amount" id="amount" placeholder="Number of tokens to create" value={this.state.amount} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="purchasePrice">Purchase price in USD</Label>
+                <Input onChange={this.handleInputChange.bind(this)} type="text" name="purchasePrice" id="purchasePrice" placeholder="Purchase price in USD" value={this.state.purchasePrice} />
               </FormGroup>
               <Button>Submit</Button>
             </Form>
@@ -230,7 +243,7 @@ class App extends Component {
       checkout.push(
         <Row>
           <Col>
-            buy shit!
+            <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
           </Col>
         </Row>
       )
@@ -238,6 +251,7 @@ class App extends Component {
 
     return (
       <Container>
+
         <Row className='titleRow header'>
           <Col>
             <img src={logo} className="App-logo" alt="logo" />
@@ -250,6 +264,8 @@ class App extends Component {
         {formMarkup}
         {successMarkup}
         {management}
+        {checkout}
+      
         <div className="footer">
           <Navbar expand="md">
             <NavbarBrand href="https://www.wyohackathon.io">WyoHackathon</NavbarBrand>
@@ -263,6 +279,7 @@ class App extends Component {
             </Collapse>
           </Navbar>
         </div>
+
       </Container>
     );
   }
