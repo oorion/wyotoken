@@ -188,10 +188,17 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
+<<<<<<< Updated upstream
               <h2 className='stepHeaders'>Step 2: Send $.01 (miners fee)</h2>
             </Col>
           </Row>
           <Row className='payment'>
+=======
+              <h2 className='stepHeaders'> Step 2: Send $.01 (miners fee) </h2>
+            </Col>
+          </Row>
+          <Row className='center'>
+>>>>>>> Stashed changes
             <Col>
               <QRCode value={cashAddress} className='qrcode' />
             </Col>
@@ -212,7 +219,11 @@ class App extends Component {
       management.push(
         <Row>
           <Col>
+<<<<<<< Updated upstream
             <h2 className ='stepHeaders'>Step 3: Grant Tokens</h2>
+=======
+            <h2 className='stepHeaders'>Step 3: Grant Tokens</h2>
+>>>>>>> Stashed changes
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="grantee" id="grantee" placeholder="Grantee" value={this.state.grantee} />
