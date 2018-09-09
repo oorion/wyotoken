@@ -69,12 +69,12 @@ class App extends Component {
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
-      txid: "b8f2a774504bc13f720de1502b57c2da3ad114255253dbbc2673cb0c39dab3e8",
-      vout: 0,
+      txid: "d1eef6851dc269e7bfd7833854c7adf45e351b85d14f63bbf3c0f6d9c8170db0",
+      vout: 1,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.00198362,
-      value: 0.00198362,
-      satoshis: 198362
+      amount: 0.02,
+      value: 0.02,
+      satoshis: 2000000
     }];
 
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
