@@ -75,6 +75,10 @@ body {
   color: white;
 }
 
+.footer a:hover {
+  color: #FFC425;
+}
+
 .titleRow {
   background-color: #492F24;
 }

@@ -72,18 +72,18 @@ class App extends Component {
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
-      txid: "a349e44afcec4be2a49031957ac2c693f2f77b2a39f802dc38e57cf9c22623fc",
+      txid: "b8f2a774504bc13f720de1502b57c2da3ad114255253dbbc2673cb0c39dab3e8",
       vout: 0,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.00798908,
-      value: 0.00798908,
-      satoshis: 798908
+      amount: 0.00198362,
+      value: 0.00198362,
+      satoshis: 198362
     }];
 
     let rawTx = await Wormhole.RawTransactions.create(utxo, {});
     let opReturn = await Wormhole.RawTransactions.opReturn(rawTx, managed);
     let ref = await Wormhole.RawTransactions.reference(opReturn, cashAddress);
-    let changeHex = await Wormhole.RawTransactions.change(ref, utxo, cashAddress, 0.006);
+    let changeHex = await Wormhole.RawTransactions.change(ref, utxo, cashAddress, 0.00006);
 
     let tx = Wormhole.Transaction.fromHex(changeHex)
     let tb = Wormhole.Transaction.fromTransaction(tx)
@@ -106,17 +106,17 @@ class App extends Component {
     let grant = await Wormhole.PayloadCreation.grant(196, "100");
 
     let utxo = [{
-      txid: "a349e44afcec4be2a49031957ac2c693f2f77b2a39f802dc38e57cf9c22623fc",
-      vout: 0,
+      txid: "cc066951305344604ae355797ae0fb69d3ea2f8443c079b25a7b7682f8aa9fcd",
+      vout: 1,
       scriptPubKey: "76a91423da806c2dbf8f7381c391d1018cec0f963d491888ac",
-      amount: 0.00798908,
-      value: 0.00798908,
-      satoshis: 798908
+      amount: 0.00198362,
+      value: 0.00198362,
+      satoshis: 198362
     }];
     let rawTx = await Wormhole.RawTransactions.create([utxo], {});
     let opReturn = await Wormhole.RawTransactions.opReturn(rawTx, grant);
     let ref = await Wormhole.RawTransactions.reference(opReturn, cashAddress2);
-    let changeHex = await Wormhole.RawTransactions.change(ref, [utxo], cashAddress, 0.0006);
+    let changeHex = await Wormhole.RawTransactions.change(ref, [utxo], cashAddress, 0.00006);
 
     let tx = Wormhole.Transaction.fromHex(changeHex)
     let tb = Wormhole.Transaction.fromTransaction(tx)
@@ -252,7 +252,7 @@ class App extends Component {
         {management}
         <div className="footer">
           <Navbar expand="md">
-            <NavbarBrand href="https://www.wyohackathon.io/ ">WyoHackathon</NavbarBrand>
+            <NavbarBrand href="https://www.wyohackathon.io">WyoHackathon</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
@@ -262,7 +262,6 @@ class App extends Component {
               </Nav>
             </Collapse>
           </Navbar>
-          <a href=''></a>
         </div>
       </Container>
     );
