@@ -9,6 +9,8 @@ body {
 
 .App-logo {
   height: 223px;
+  background-color: #492F24;
+  /* background-image: radial-gradient(#492F24,#FFC425); */
 }
 
 .App-header {
@@ -44,6 +46,7 @@ body {
 .header {
   text-align: center;
   font-family: "Krona One";
+  background-color: #492F24;
 }
 
 .payment {
@@ -59,6 +62,8 @@ body {
 .header .title {
   color: white;
   padding-top: 5%;
+  height: 300px !important;
+  width: 300px !important;
 }
 
 .footer {
@@ -69,7 +74,6 @@ body {
   background-color: #492f24;
   color: white;
   text-align: center;
-  padding: 25px;
 }
 
 .footer a {
@@ -80,11 +84,19 @@ body {
   color: #FFC425;
 }
 
-.titleRow {
-  background-color: #492F24;
+.title {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Krona One";
 }
 
-.container .inputField {
-  width: 50%;
-  margin: auto;
+.form-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.stepHeaders{
+  font-family: "Krona One";
+  font-size: 140%;
+  margin-top: 10px;
 }
