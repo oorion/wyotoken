@@ -158,7 +158,7 @@ class App extends Component {
       formMarkup.push(
         <Row>
           <Col>
-            <h2>Step 1: Define your token</h2>
+            <h2 className='stepHeaders'>Step 1: Define your token</h2>
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <FormGroup>
                 <Input className='inputField' onChange={this.handleInputChange.bind(this)} type="text" name="name" id="name" placeholder="Name" value={this.state.name} />
