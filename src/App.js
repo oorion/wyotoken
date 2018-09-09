@@ -55,8 +55,6 @@ class App extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    // BITBOX.RawTransactions.getRawTransaction(this.state.txid).then((result) => {
-    // }, (err) => { console.log(err); });
 
     let managed = await Wormhole.PayloadCreation.managed(1, 0, 0, this.state.category, this.state.subcategory, this.state.name, this.state.url, this.state.description);
     let utxo = [{
@@ -102,6 +100,15 @@ class App extends Component {
     let obj = {};
     obj[id] = value;
     this.setState(obj);
+  }
+
+  bip21Address(address, amount) {
+    let options = {
+      amount: amount,
+      label: "mah label",
+      message: "bitbox ftw"
+    };
+    return BITBOX.BitcoinCash.encodeBIP21(address, options);
   }
 
   render() {
@@ -171,7 +178,11 @@ class App extends Component {
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
                 <Label for="amount">Number of tokens to create</Label>
-                <Input onChange={this.handleInputChange.bind(this)} type="text" name="amount" id="amount" placeholder="Amount" value={this.state.amount} />
+                <Input onChange={this.handleInputChange.bind(this)} type="text" name="amount" id="amount" placeholder="Number of tokens to create" value={this.state.amount} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="purchasePrice">Purchase price in USD</Label>
+                <Input onChange={this.handleInputChange.bind(this)} type="text" name="purchasePrice" id="purchasePrice" placeholder="Purchase price in USD" value={this.state.purchasePrice} />
               </FormGroup>
               <Button>Submit</Button>
             </Form>
@@ -185,7 +196,7 @@ class App extends Component {
       checkout.push(
         <Row>
           <Col>
-            buy shit!
+            <QRCode value={this.bip21Address(this.state.tokenManagementAddress, this.state.purchasePrice)} className='qrcode' />
           </Col>
         </Row>
       )
@@ -206,6 +217,7 @@ class App extends Component {
         {formMarkup}
         {successMarkup}
         {management}
+        {checkout}
       </Container>
     );
   }
