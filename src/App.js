@@ -185,13 +185,13 @@ class App extends Component {
     let successMarkup = [];
     if(this.state.showSuccess)  {
       successMarkup.push(
-        <Container className='payment'>
+        <Container>
           <Row>
             <Col>
-              Send $.01 (miners fee)
+              <h2 className='stepHeaders'>Step 2: Send $.01 (miners fee)</h2>
             </Col>
           </Row>
-          <Row>
+          <Row className='payment'>
             <Col>
               <QRCode value={cashAddress} className='qrcode' />
             </Col>
@@ -212,7 +212,7 @@ class App extends Component {
       management.push(
         <Row>
           <Col>
-            <h2>Grant Tokens</h2>
+            <h2 className ='stepHeaders'>Step 3: Grant Tokens</h2>
             <Form onSubmit={this.handleTokenCreation.bind(this)}>
               <FormGroup>
                 <Input onChange={this.handleInputChange.bind(this)} type="text" name="grantee" id="grantee" placeholder="Grantee" value={this.state.grantee} />
