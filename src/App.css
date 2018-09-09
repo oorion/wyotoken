@@ -50,13 +50,23 @@ body {
 }
 
 .payment {
-  padding-top: 20px;
-  text-align: center;
+  /* padding-top: 20px; */
   font-family: "Krona One";
+}
+
+.Container .stepHeaders{
+  margin-top: auto;
+
+}
+
+.center {
+  text-align: center;
 }
 
 .qrcode {
   padding-top: 20px;
+  height: 300px !important;
+  width: 300px !important;
 }
 
 .header .title {
